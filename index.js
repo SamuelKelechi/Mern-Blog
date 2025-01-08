@@ -44,6 +44,10 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(cors(corsOptions));
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the Blog API');
+});
+
 app.use('/api/posts', postRoutes); // Post routes
 
 
