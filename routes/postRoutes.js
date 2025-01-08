@@ -7,6 +7,9 @@ const {createPost, getPosts, getPost, editPost, deletePost} = require('../contro
 
 const router = Router()
 
+router.get('/', (req, res) => {
+    res.send('Welcome to the Home Page!');
+  });
 router.post('/', upload.single('image'), createPost)
 router.get('/', getPosts)
 router.get('/:id', getPost)

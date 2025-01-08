@@ -45,10 +45,23 @@ app.use(express.urlencoded({extended: true}))
 
 // Routes
 app.use('/api/posts', postRoutes); // Post routes
+
 app.use(cors(corsOptions));
 app.use(notFound)
 app.use(errorHandler)
 
+// Error middleware
+app.use((req, res, next) => {
+    const error = new Error('Not Found');
+    error.status = 404;
+    next(error);
+  });
+  
+  // Generic error handler
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500).json({ error: err.message });
+  });
+  
 
 // Connect to MongoDB
 connect(process.env.MONGO_URI).then(app.listen(3000, () => console.log(`server is running on port ${process.env.PORT}`))).catch(error => {console.log(error)})
