@@ -1,4 +1,5 @@
 const {Router} = require('express')
+const PostModel = require('../models/PostModel')
 const upload = require('../config/multerConfig'); // Adjust path to your multer setup
 
 const {createPost, getPosts, getPost, editPost, deletePost} = require('../controllers/postControllers')

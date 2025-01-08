@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const PostModel = require('./models/PostModel')
 const {connect} = require('mongoose')
 const cors = require('cors');
 const postRoutes = require('./routes/postRoutes');
