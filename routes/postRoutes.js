@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     res.send('Welcome to the Home Page!');
   });
 router.post('/', upload.single('image'), createPost)
-router.get('/', getPosts)
+router.get('/all', getPosts)
 router.get('/:id', getPost)
 router.patch('/:id', upload.single('image'), editPost)
 router.delete('/:id', deletePost)

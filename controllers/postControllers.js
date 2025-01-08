@@ -1,4 +1,4 @@
-const PostModel = require('../models/PostModel')
+const Post = require('../models/PostModel')
 const path = require('path')
 const fs = require('fs')
 const HttpError = require('../models/errorModel')

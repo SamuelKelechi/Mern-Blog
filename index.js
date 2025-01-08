@@ -7,7 +7,7 @@ const postRoutes = require('./routes/postRoutes');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const { notFound, errorHandler } = require('./middleware/errorMiddleware')
+const { notFound, errorHandler } =  require('./middleware/errorMiddleware');
 
 // Initialize the app
 const app = express();
@@ -38,29 +38,20 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage }); // Multer instance for file uploads
 
+
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
-// Routes
+app.use(cors(corsOptions));
+
 app.use('/api/posts', postRoutes); // Post routes
 
-app.use(cors(corsOptions));
+
 app.use(notFound)
 app.use(errorHandler)
 
-// Error middleware
-app.use((req, res, next) => {
-    const error = new Error('Not Found');
-    error.status = 404;
-    next(error);
-  });
-  
-  // Generic error handler
-  app.use((err, req, res, next) => {
-    res.status(err.status || 500).json({ error: err.message });
-  });
   
 
 // Connect to MongoDB
