@@ -11,8 +11,6 @@ const { notFound, errorHandler } =  require('./middleware/errorMiddleware');
 
 // Initialize the app
 const app = express();
-const PORT = process.env.PORT || 5000;
-
 // Configure CORS
 const corsOptions = {
     origin: ['http://localhost:3000', 'http://localhost:3001'], // Frontend origins
