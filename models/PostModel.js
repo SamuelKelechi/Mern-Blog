@@ -8,4 +8,4 @@ const postSchema = new Schema({
 }, {timestamps: true})
 
 
-module.exports = model("Post", postSchema)
+module.exports = model("postModel", postSchema)
